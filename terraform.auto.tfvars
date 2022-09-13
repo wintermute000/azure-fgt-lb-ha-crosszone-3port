@@ -10,6 +10,7 @@ rgname = "loj-azhublb-rg"
 vnetname = "azhublbvnet"
 activename = "azhublb-fgt1"
 passivename = "azhublb-fgt2"
-clientname = "azhubsdn-client"
+client1name = "azhublb-client1"
+client2name = "azhublb-client2"
 fgtversion = "7.2.1"
 

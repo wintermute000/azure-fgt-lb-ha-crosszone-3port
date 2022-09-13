@@ -69,10 +69,16 @@ variable "passivename" {
   default = "azhubsdn-fgt2"
   }
 
-  variable "clientname" {
+variable "client1name" {
   type = string
-  default = "azhubsdn-client"
+  default = "azhubsdn-client1"
   }
+
+variable "client2name" {
+  type = string
+  default = "azhubsdn-client2"
+  }
+
 
 // To use custom image 
 // by default is false
@@ -161,27 +167,39 @@ variable "vnetcidr" {
 }
 
 variable "vnetfgtroute" {
-  default = "172.30.0.0 255.255.0.0"
+  default = "172.30.0.0"
+}
+
+variable "vnetfgtmask" {
+  default = "255.255.0.0"
 }
 
 variable "publiccidr" {
   default = "172.30.0.0/24"
 }
 
-variable "privatecidr" {
+variable "private1cidr" {
   default = "172.30.1.0/24"
 }
 
-variable "hasynccidr" {
+variable "private2cidr" {
   default = "172.30.2.0/24"
 }
 
-variable "hamgmtcidr" {
+variable "private3cidr" {
   default = "172.30.3.0/24"
 }
 
+variable "hasynccidr" {
+  default = "172.30.254.0/24"
+}
+
+variable "hamgmtcidr" {
+  default = "172.30.255.0/24"
+}
+
 variable "activeport1" {
-  default = "172.30.3.10"
+  default = "172.30.255.10"
 }
 
 variable "activeport1mask" {
@@ -204,16 +222,9 @@ variable "activeport3mask" {
   default = "255.255.255.0"
 }
 
-variable "activeport4" {
-  default = "172.30.2.10"
-}
-
-variable "activeport4mask" {
-  default = "255.255.255.0"
-}
 
 variable "passiveport1" {
-  default = "172.30.3.11"
+  default = "172.30.255.11"
 }
 
 variable "passiveport1mask" {
@@ -236,16 +247,8 @@ variable "passiveport3mask" {
   default = "255.255.255.0"
 }
 
-variable "passiveport4" {
-  default = "172.30.2.11"
-}
-
-variable "passiveport4mask" {
-  default = "255.255.255.0"
-}
-
 variable "port1gateway" {
-  default = "172.30.3.1"
+  default = "172.30.255.1"
 }
 
 variable "port2gateway" {
