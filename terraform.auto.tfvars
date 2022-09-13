@@ -1,0 +1,15 @@
+// Change to your own azure environment
+subscription_id = "75de9f41-d4c2-4597-bbe3-c69fe62f9528"
+client_id       = "4e259a5a-ecc1-425c-b462-e476aadf5163"
+client_certificate_path   = "/home/johannlo/.ssh/tf-service-principal.pfx"
+tenant_id       = "942b80cd-1b14-42a1-8dcf-4b21dece61ba"
+size   = "Standard_F4"
+client_size   = "Standard_B1s"
+location = "australiaeast"
+rgname = "loj-azhublb-rg"
+vnetname = "azhublbvnet"
+activename = "azhublb-fgt1"
+passivename = "azhublb-fgt2"
+clientname = "azhubsdn-client"
+fgtversion = "7.2.1"
+
