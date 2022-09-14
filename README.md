@@ -26,7 +26,7 @@ Terraform deploys the following components:
 * 2x Ubuntu 20.04 LTS test client VMs in each workload subnet.
 * Choose PAYG or BYOL in variables - if BYOL, place .lic files in subfolder "licenses" and define in variables.
 
-
+![img](https://github.com/wintermute000/azure-fgt-lb-ha-crosszone-3port/blob/master/azure-fgt-lb-ha-crosszone-3port.jpg)
 
 ### If BYOL is used, then the VNET summary route will not be created in FortiOS due to the limitation of unlicensed VM only allowing 3 routes. Add the VNET summary route after licensing has finished.
 
