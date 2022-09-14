@@ -27,7 +27,7 @@ variable "client_size" {
   default = "Standard_B1s"
 }
 
-// Availability zones only support in certain
+// Availability zones only support in certain regions
 // Check: https://docs.microsoft.com/en-us/azure/availability-zones/az-overview
 variable "zone1" {
   type    = string
@@ -46,7 +46,7 @@ variable "location" {
 
 variable "vnetname" {
   type = string
-  default = "azhubsdnvnet"
+  default = "azhublb-vnet"
   }
 
 variable "rgname" {
@@ -59,49 +59,90 @@ variable "activename" {
   default = "azhubsdn-fgt1"
   }
 
-
 variable "passivename" {
   type = string
   default = "azhubsdn-fgt2"
   }
 
+variable "publicsubnetname" {
+  type = string
+  default = "ext-subnet"
+  }
+
+variable "private1subnetname" {
+  type = string
+  default = "int-subnet"
+  }
+
+variable "private2subnetname" {
+  type = string
+  default = "workload1-subnet"
+  }
+
+variable "private3subnetname" {
+  type = string
+  default = "workload2-subnet"
+  }
+
+variable "hamgmtsubnetname" {
+  type = string
+  default = "hamgmt-subnet"
+  }
+
+variable "clusterpip1name" {
+  type = string
+  default = "cluster1-pip"
+  }
+
+variable "activepipname" {
+  type = string
+  default = "active-mgmt-pip"
+  }
+
+variable "passivepipname" {
+  type = string
+  default = "passive-mgmt-pip"
+  }
+
+
 variable "client1name" {
   type = string
-  default = "azhubsdn-client1"
+  default = "azhublb-client1"
   }
 
 variable "client2name" {
   type = string
-  default = "azhubsdn-client2"
+  default = "azhublb-client2"
   }
 
 
-// To use custom image 
-// by default is false
-variable "custom" {
-  default = false
-}
+# // To use custom image 
+# // by default is false
+# variable "custom" {
+#   default = false
+# }
 
-//  Custom image blob uri
-variable "customuri" {
-  type    = string
-  default = "<custom image blob uri>"
-}
+# //  Custom image blob uri
+# variable "customuri" {
+#   type    = string
+#   default = "<custom image blob uri>"
+# }
 
-variable "custom_image_name" {
-  type    = string
-  default = "<custom image name>"
-}
+# variable "custom_image_name" {
+#   type    = string
+#   default = "<custom image name>"
+# }
 
-variable "custom_image_resource_group_name" {
-  type    = string
-  default = "<custom image resource group>"
-}
+# variable "custom_image_resource_group_name" {
+#   type    = string
+#   default = "<custom image resource group>"
+# }
 
 // License Type to create FortiGate-VM
 // Provide the license type for FortiGate-VM Instances, either byol or payg.
+// If BYOL the fourth static route (for vnet summary) is not automatically created due to inherent FortiOS limitation before licensing.
 variable "license_type" {
-  default = "byol"
+  default = "payg"
 }
 
 // enable accelerate network, either true or false, default is false
@@ -282,3 +323,9 @@ variable "license2" {
   default = "FGVM02TM22024055.lic"
 }
 
+variable "tags" {
+  type = map
+  default = {
+    environment = "dev"
+  }
+  }

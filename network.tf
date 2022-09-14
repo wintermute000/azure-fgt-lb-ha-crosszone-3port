@@ -10,14 +10,14 @@ resource "azurerm_virtual_network" "fgtvnetwork" {
 }
 
 resource "azurerm_subnet" "publicsubnet" {
-  name                 = "publicSubnet"
+  name                 = var.publicsubnetname
   resource_group_name  = azurerm_resource_group.myterraformgroup.name
   virtual_network_name = azurerm_virtual_network.fgtvnetwork.name
   address_prefixes     = [var.publiccidr]
 }
 
 resource "azurerm_subnet" "private1subnet" {
-  name                 = "private1Subnet"
+  name                 = var.private1subnetname
   resource_group_name  = azurerm_resource_group.myterraformgroup.name
   virtual_network_name = azurerm_virtual_network.fgtvnetwork.name
   address_prefixes     = [var.private1cidr]
@@ -25,14 +25,14 @@ resource "azurerm_subnet" "private1subnet" {
 }
 
 resource "azurerm_subnet" "private2subnet" {
-  name                 = "private2Subnet"
+  name                 = var.private2subnetname
   resource_group_name  = azurerm_resource_group.myterraformgroup.name
   virtual_network_name = azurerm_virtual_network.fgtvnetwork.name
   address_prefixes     = [var.private2cidr]
 }
 
 resource "azurerm_subnet" "private3subnet" {
-  name                 = "private3Subnet"
+  name                 = var.private3subnetname
   resource_group_name  = azurerm_resource_group.myterraformgroup.name
   virtual_network_name = azurerm_virtual_network.fgtvnetwork.name
   address_prefixes     = [var.private3cidr]
@@ -40,7 +40,7 @@ resource "azurerm_subnet" "private3subnet" {
 
 
 resource "azurerm_subnet" "hamgmtsubnet" {
-  name                 = "HAMGMTSubnet"
+  name                 = var.hamgmtsubnetname
   resource_group_name  = azurerm_resource_group.myterraformgroup.name
   virtual_network_name = azurerm_virtual_network.fgtvnetwork.name
   address_prefixes     = [var.hamgmtcidr]
@@ -48,7 +48,7 @@ resource "azurerm_subnet" "hamgmtsubnet" {
 
 // Allocated Public IP
 resource "azurerm_public_ip" "ClusterPublicIP" {
-  name                = "ClusterPublicIP"
+  name                = var.clusterpip1name
   location            = var.location
   resource_group_name = azurerm_resource_group.myterraformgroup.name
   sku                 = "Standard"
@@ -58,7 +58,7 @@ resource "azurerm_public_ip" "ClusterPublicIP" {
 }
 
 resource "azurerm_public_ip" "ActiveMGMTIP" {
-  name                = "ActiveMGMTIP"
+  name                = var.activepipname
   location            = var.location
   resource_group_name = azurerm_resource_group.myterraformgroup.name
   sku                 = "Standard"
@@ -68,7 +68,7 @@ resource "azurerm_public_ip" "ActiveMGMTIP" {
 }
 
 resource "azurerm_public_ip" "PassiveMGMTIP" {
-  name                = "PassiveMGMTIP"
+  name                = var.passivepipname
   location            = var.location
   resource_group_name = azurerm_resource_group.myterraformgroup.name
   sku                 = "Standard"
