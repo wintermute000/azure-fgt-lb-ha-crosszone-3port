@@ -167,11 +167,7 @@ variable "vnetcidr" {
 }
 
 variable "vnetfgtroute" {
-  default = "172.30.0.0"
-}
-
-variable "vnetfgtmask" {
-  default = "255.255.0.0"
+  default = "172.30.0.0/16"
 }
 
 variable "publiccidr" {

@@ -32,18 +32,18 @@ resource "azurerm_route_table" "private2_rt" {
   location            = azurerm_resource_group.myterraformgroup.location
   resource_group_name = azurerm_resource_group.myterraformgroup.name
   
-  # route {
-  #   name           = "internal_subnet"
-  #   address_prefix = var.private2cidr
-  #   next_hop_type  = "VnetLocal"
-  # }
+  route {
+    name           = "internal_subnet"
+    address_prefix = var.private2cidr
+    next_hop_type  = "VnetLocal"
+  }
 
-  # route {
-  #   name           = "internal_vnet"
-  #   address_prefix = var.vnetcidr
-  #   next_hop_type  = "VirtualAppliance"
-  #   next_hop_in_ip_address = var.intlbaddress
-  # }
+  route {
+    name           = "internal_vnet"
+    address_prefix = var.vnetcidr
+    next_hop_type  = "VirtualAppliance"
+    next_hop_in_ip_address = var.intlbaddress
+  }
 
   route {
     name           = "internal_default"
@@ -67,18 +67,18 @@ resource "azurerm_route_table" "private3_rt" {
   location            = azurerm_resource_group.myterraformgroup.location
   resource_group_name = azurerm_resource_group.myterraformgroup.name
   
-  # route {
-  #   name           = "internal_subnet"
-  #   address_prefix = var.private3cidr
-  #   next_hop_type  = "VnetLocal"
-  # }
+  route {
+    name           = "internal_subnet"
+    address_prefix = var.private3cidr
+    next_hop_type  = "VnetLocal"
+  }
 
-  # route {
-  #   name           = "internal_vnet"
-  #   address_prefix = var.vnetcidr
-  #   next_hop_type  = "VirtualAppliance"
-  #   next_hop_in_ip_address = var.intlbaddress
-  # }
+  route {
+    name           = "internal_vnet"
+    address_prefix = var.vnetcidr
+    next_hop_type  = "VirtualAppliance"
+    next_hop_in_ip_address = var.intlbaddress
+  }
 
   route {
     name           = "internal_default"

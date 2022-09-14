@@ -22,3 +22,7 @@ output "Password" {
   value = var.adminpassword
 }
 
+
+output "vnetfgtroute" {
+  value = var.vnetfgtroute
+}

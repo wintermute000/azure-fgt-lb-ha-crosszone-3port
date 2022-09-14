@@ -154,7 +154,7 @@ resource "azurerm_virtual_machine" "activefgtvm" {
       adminsport      = var.adminsport
       sshport      = var.sshport
       vnetfgtroute = var.vnetfgtroute
-      vnetfgtmask = var.vnetfgtmask
+
 
       rsg             = azurerm_resource_group.myterraformgroup.name
       clusterip       = azurerm_public_ip.ClusterPublicIP.name
