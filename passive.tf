@@ -184,8 +184,8 @@ resource "azurerm_role_assignment" "passivefgvm_reader_role" {
   principal_id         = azurerm_virtual_machine.passivefgtvm[0].identity.0.principal_id
 }
 
-resource "azurerm_role_assignment" "passivefgvm_networkcontributor_role" {
-  scope                = "/subscriptions/${var.subscription_id}"
-  role_definition_name = "Network Contributor"
-  principal_id         = azurerm_virtual_machine.passivefgtvm[0].identity.0.principal_id
-}
+# resource "azurerm_role_assignment" "passivefgvm_networkcontributor_role" {
+#   scope                = "/subscriptions/${var.subscription_id}"
+#   role_definition_name = "Network Contributor"
+#   principal_id         = azurerm_virtual_machine.passivefgtvm[0].identity.0.principal_id
+# }

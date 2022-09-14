@@ -23,9 +23,12 @@ Terraform deploys the following components:
 * 2x FortiGate-VM (BYOL/PAYG) instances with three NICs.  Each FortiGate-VM reside in different availability zones.
 * Untrust interface placed in SD-WAN zone "Underlay".
 * 2x firewall rules - permit outbound, and permit internal.
+* Azure SDN connector using managed identity with reader role.
 * 2x Ubuntu 20.04 LTS test client VMs in each workload subnet.
 * Choose PAYG or BYOL in variables - if BYOL, place .lic files in subfolder "licenses" and define in variables.
+* Terraform backend (versions.tf) stored in Azure storage - customise backend.conf to suit or modify as appropriate. An backend.conf.example is provided. 
 
+Topology using default variables
 ![img](https://github.com/wintermute000/azure-fgt-lb-ha-crosszone-3port/blob/master/azure-fgt-lb-ha-crosszone-3port.jpg)
 
 ### If BYOL is used, then the VNET summary route will not be created in FortiOS due to the limitation of unlicensed VM only allowing 3 routes. Add the VNET summary route after licensing has finished.
@@ -36,8 +39,8 @@ For a detailed walkthrough of the operation of this topology, refer to https://g
 
 To deploy the FortiGate-VM to Azure:
 1. Clone the repository.
-2. Customize variables defined in `variables.tf` file as needed with a standard *.auto.tfvars file.
-3. Initialize the providers and modules and run terraform as normal.
+2. Customize variables defined in `variables.tf` file as needed with a standard *.auto.tfvars file. An example is provided.
+3. Initialize the providers defining the backend (terraform init -backend-config=backend.conf) and run terraform as normal.
 
 Outputs:
 
@@ -47,10 +50,22 @@ PassiveMGMTPublicIP = <Passive FGT Management Public IP>
 Password = <FGT Password>
 ResourceGroup = <Resource Group>
 Username = <FGT admin>
+vnetfgtroute = <vnet summary route>
 
+Azure credentials:
+
+The following code is commented out in provider.tf that can be uncommented to run via a service principal
+
+  # subscription_id = var.subscription_id
+  # client_id       = var.client_id
+  # client_certificate_path   = var.client_certificate_path
+  # tenant_id       = var.tenant_id
+
+The client_id and client_certificate_path variables are only required for this purpose.
 
 ## Acknowledgements
-This template was developed from the starting point of https://github.com/fortinet/fortigate-terraform-deploy/tree/main/azure/7.2/ha-port1-mgmt-crosszone-3ports
+This template was developed from the starting point of https://github.com/fortinet/fortigate-terraform-deploy/tree/main/azure/7.2/ha-port1-mgmt-crosszone-3ports and then developed into the HA load balancer topology.
+References to custom images are commented out. 
 
 ## Support
 Fortinet-provided scripts in this and other GitHub projects do not fall under the regular Fortinet technical support scope and are not supported by FortiCare Support Services.
