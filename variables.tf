@@ -1,22 +1,18 @@
 // Azure configuration
 variable "subscription_id" {
     type = string
-    default = "75de9f41-d4c2-4597-bbe3-c69fe62f9528"
     }
 
 variable "client_id" {
   type = string
-    default = "4e259a5a-ecc1-425c-b462-e476aadf5163"
     }
 
 variable "client_certificate_path" {
   type = string
-  default = "/home/johannlo/.ssh/tf-service-principal.pfx"
   }
 
 variable "tenant_id" {
   type = string
-  default = "942b80cd-1b14-42a1-8dcf-4b21dece61ba"
   }
 
 //  For HA, choose instance size that support 4 nics at least
@@ -143,12 +139,12 @@ variable "fgtversion" {
 
 variable "adminusername" {
   type    = string
-  default = "loj"
+  default = "fortiuser"
 }
 
 variable "adminpassword" {
   type    = string
-  default = "F0rtinet!"
+  default = "SecurityFabric1!"
 }
 
 // HTTPS Port
