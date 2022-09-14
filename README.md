@@ -56,10 +56,10 @@ Azure credentials:
 
 The following code is commented out in provider.tf that can be uncommented to run via a service principal
 
-  # subscription_id = var.subscription_id
-  # client_id       = var.client_id
-  # client_certificate_path   = var.client_certificate_path
-  # tenant_id       = var.tenant_id
+- subscription_id = var.subscription_id
+- client_id       = var.client_id
+- client_certificate_path   = var.client_certificate_path
+- tenant_id       = var.tenant_id
 
 The client_id and client_certificate_path variables are only required for this purpose.
 
