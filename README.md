@@ -23,6 +23,7 @@ Terraform deploys the following components:
 * 2x FortiGate-VM (BYOL/PAYG) instances with three NICs.  Each FortiGate-VM reside in different availability zones.
 * Untrust interface placed in SD-WAN zone "Underlay".
 * 2x firewall rules - permit outbound, and permit internal.
+* 4x load balancer rules - UDP 500/4500 without floating-ip for IPSec/ADVPN connectivity , TCP541 with floating-ip for FortiManager, and TCP22 with floating-ip for testing. Note FortiGate VIPs will need to be created. 
 * Azure SDN connector using managed identity with reader role.
 * 2x Ubuntu 20.04 LTS test client VMs in each workload subnet.
 * Choose PAYG or BYOL in variables - if BYOL, place .lic files in subfolder "licenses" and define in variables.
