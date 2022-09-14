@@ -1,4 +1,4 @@
-# Deploy FortiGate-VM (BYOL/PAYG) HA Load Balancer Cluster on Azure in different zones with 3 ports
+-# Deploy FortiGate-VM (BYOL/PAYG) HA Load Balancer Cluster on Azure in different zones with 3 ports
 A Terraform script to deploy a FortiGate-VM Cluster on Azure using a load-balancer HA topology
 
 ## Introduction
@@ -44,13 +44,13 @@ To deploy the FortiGate-VM to Azure:
 
 Outputs:
 
-ActiveMGMTPublicIP = <Active FGT Management Public IP>
-ClusterPublicIP = <Cluster Public IP>
-PassiveMGMTPublicIP = <Passive FGT Management Public IP>
-Password = <FGT Password>
-ResourceGroup = <Resource Group>
-Username = <FGT admin>
-vnetfgtroute = <vnet summary route>
+- ActiveMGMTPublicIP = <Active FGT Management Public IP>
+- ClusterPublicIP = <Cluster Public IP>
+- PassiveMGMTPublicIP = <Passive FGT Management Public IP>
+- Password = <FGT Password>
+- ResourceGroup = <Resource Group>
+- Username = <FGT admin>
+- vnetfgtroute = <vnet summary route>
 
 Azure credentials:
 
