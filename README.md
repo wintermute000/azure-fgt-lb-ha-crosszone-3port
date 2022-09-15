@@ -38,7 +38,7 @@ Terraform deploys the following components:
 
 **Topology using default variables**
 
-![img](https://github.com/wintermute000/azure-fgt-lb-ha-crosszone-3port/blob/master/azure-fgt-lb-ha-crosszone-3port.jpg)
+![img](https://github.com/wintermute000/azure-fgt-lb-ha-crosszone-3port/blob/main/azure-fgt-lb-ha-crosszone-3port.jpg)
 
 For a detailed walkthrough of the operation of this topology, refer to https://github.com/fortinet/azure-templates/tree/main/FortiGate/Active-Passive-ELB-ILB
 
