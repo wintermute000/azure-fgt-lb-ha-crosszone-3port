@@ -1,4 +1,5 @@
--# Deploy FortiGate-VM (BYOL/PAYG) HA Load Balancer Cluster on Azure in different zones with 3 ports
+## FortiGate-VM (BYOL/PAYG) HA Load Balancer Cluster on Azure in different zones with 3 ports
+
 A Terraform script to deploy a FortiGate-VM Cluster on Azure using a load-balancer HA topology
 
 ## Introduction
