@@ -81,8 +81,8 @@ resource "azurerm_virtual_machine" "passivefgtvm" {
   network_interface_ids        = [azurerm_network_interface.passiveport1.id, azurerm_network_interface.passiveport2.id, azurerm_network_interface.passiveport3.id]
   primary_network_interface_id = azurerm_network_interface.passiveport1.id
   vm_size                      = var.size
-  zones                        = [var.zone2]
-
+  zones                        = var.availability_zone ? [var.zone2] : null
+  availability_set_id   = var.availability_zone ? null : azurerm_availability_set.fgt_av_set[0].id
   delete_os_disk_on_termination    = true
   delete_data_disks_on_termination = true
 
@@ -140,7 +140,7 @@ resource "azurerm_virtual_machine" "passivefgtvm" {
       # clientsecret    = var.client_certificate_path
       adminsport      = var.adminsport
       sshport      = var.sshport
-      vnetfgtroute = var.vnetfgtroute
+      vnetcidr = var.vnetcidr
       rsg             = azurerm_resource_group.myterraformgroup.name
       clusterip       = azurerm_public_ip.ClusterPublicIP.name
       # routename       = azurerm_route_table.private1_rt.name

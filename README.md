@@ -7,7 +7,7 @@ This topology is only recommended for using with FOS 7.0.5 and later which suppo
 * port2 - public/untrust
 * port3 - private/trust
 
-This topology requires an Azure region that supports availability zones.
+This terraform script supports both availability zones and availablity sets with a variable toggle.
 
 ## Requirements
 
@@ -23,18 +23,22 @@ Terraform deploys the following components:
 * 2x FortiGate-VM (BYOL/PAYG) instances with three NICs.  Each FortiGate-VM reside in different availability zones.
 * Untrust interface placed in SD-WAN zone "Underlay".
 * 2x firewall rules - permit outbound, and permit internal.
-* 4x load balancer rules - UDP 500/4500 without floating-ip for IPSec/ADVPN connectivity , TCP541 with floating-ip for FortiManager, and TCP22 with floating-ip for testing. Note FortiGate VIPs will need to be created. 
-* Azure SDN connector using managed identity with reader role.
+* 4x load balancer rules - UDP 500/4500 without floating-ip for IPSec/ADVPN connectivity , TCP541 with floating-ip for FortiManager, and TCP22 with floating-ip for testing. Note FortiGate VIPs/rules will need to be created for TCP 541/22 examples. 
+* Azure SDN connector using managed identity with reader role. The network contributor role is commented out (required for SDN connector failover topology)
 * 2x Ubuntu 20.04 LTS test client VMs in each workload subnet.
 * Choose PAYG or BYOL in variables - if BYOL, place .lic files in subfolder "licenses" and define in variables.
+* Choose availability zone or availability set using the availability_zone boolean variable (false will use availability set).
 * Terraform backend (versions.tf) stored in Azure storage - customise backend.conf to suit or modify as appropriate. An backend.conf.example is provided. 
+
+** If BYOL is used, then the VNET summary route will not be created in FortiOS due to the limitation of unlicensed VM only allowing 3 routes. Add the VNET summary route after licensing has finished. **
+** If availability_zone is set to true, then region must support this feature. If availability_zone is set to false, then the deployment will be performed using an availability set with 2 domains. **
 
 Topology using default variables
 ![img](https://github.com/wintermute000/azure-fgt-lb-ha-crosszone-3port/blob/master/azure-fgt-lb-ha-crosszone-3port.jpg)
 
-### If BYOL is used, then the VNET summary route will not be created in FortiOS due to the limitation of unlicensed VM only allowing 3 routes. Add the VNET summary route after licensing has finished.
-
 For a detailed walkthrough of the operation of this topology, refer to https://github.com/fortinet/azure-templates/tree/main/FortiGate/Active-Passive-ELB-ILB
+
+** Azure load balancers do not support ICMP traffic **
 
 ## Deployment
 

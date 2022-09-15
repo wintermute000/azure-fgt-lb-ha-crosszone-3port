@@ -27,6 +27,12 @@ variable "client_size" {
   default = "Standard_B1s"
 }
 
+// If availablity zone false, then availability set is used
+variable "availability_zone" {
+  type    = bool
+  default = true
+}
+
 // Availability zones only support in certain regions
 // Check: https://docs.microsoft.com/en-us/azure/availability-zones/az-overview
 variable "zone1" {
@@ -200,10 +206,6 @@ variable "sshport" {
 }
 
 variable "vnetcidr" {
-  default = "172.30.0.0/16"
-}
-
-variable "vnetfgtroute" {
   default = "172.30.0.0/16"
 }
 
