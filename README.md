@@ -31,8 +31,8 @@ Terraform deploys the following components:
 * Choose availability zone or availability set using the availability_zone boolean variable (false will use availability set).
 * Terraform backend (versions.tf) stored in Azure storage - customise backend.conf to suit or modify as appropriate. An backend.conf.example is provided. 
 
-** If BYOL is used, then the VNET summary route will not be created in FortiOS due to the limitation of unlicensed VM only allowing 3 routes. Add the VNET summary route after licensing has finished. **
-** If availability_zone is set to true, then region must support this feature. If availability_zone is set to false, then the deployment will be performed using an availability set with 2 domains. **
+**If BYOL is used, then the VNET summary route will not be created in FortiOS due to the limitation of unlicensed VM only allowing 3 routes. Add the VNET summary route after licensing has finished.**
+**If availability_zone is set to true, then region must support this feature. If availability_zone is set to false, then the deployment will be performed using an availability set with 2 domains.**
 
 Topology using default variables
 ![img](https://github.com/wintermute000/azure-fgt-lb-ha-crosszone-3port/blob/master/azure-fgt-lb-ha-crosszone-3port.jpg)
