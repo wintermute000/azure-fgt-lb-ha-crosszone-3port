@@ -5,7 +5,7 @@ A Terraform script to deploy a FortiGate-VM Cluster on Azure using a load-balanc
 ## Introduction
 This topology is only recommended for using with FOS 7.0.5 and later which supports 3 port HA setup combining HA reserved management ports and sync into the same interfaces.
 * port1 - hamgmt/hasync with public IP
-* port2 - public/untrust
+* port2 - public/untrust with public IP via load balancer
 * port3 - private/trust
 
 This terraform script supports both availability zones and availablity sets with a variable toggle.
@@ -27,6 +27,7 @@ Terraform deploys the following components:
 * 4x load balancer rules - UDP 500/4500 without floating-ip for IPSec/ADVPN connectivity , TCP541 with floating-ip for FortiManager, and TCP22 with floating-ip for testing. Note FortiGate VIPs/rules will need to be created for TCP 541/22 examples. 
 * Azure SDN connector using managed identity with reader role. The network contributor role is commented out (required for SDN connector failover topology)
 * 2x Ubuntu 20.04 LTS test client VMs in each workload subnet.
+* UDRs for internal subnet routing table for default routing and inter-subnet routing through FortiGate
 * Choose PAYG or BYOL in variables - if BYOL, place .lic files in subfolder "licenses" and define in variables.
 * Choose availability zone or availability set using the availability_zone boolean variable (false will use availability set).
 * Terraform backend (versions.tf) stored in Azure storage - customise backend.conf to suit or modify as appropriate. An backend.conf.example is provided. 
