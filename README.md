@@ -57,7 +57,7 @@ Outputs:
 - Password = <FGT Password>
 - ResourceGroup = <Resource Group>
 - Username = <FGT admin>
-- vnetfgtroute = <vnet summary route>
+- VNET_CIDR = <vnet summary route>
 
 Azure credentials:
 
