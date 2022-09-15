@@ -32,6 +32,7 @@ Terraform deploys the following components:
 * Terraform backend (versions.tf) stored in Azure storage - customise backend.conf to suit or modify as appropriate. An backend.conf.example is provided. 
 
 **If BYOL is used, then the VNET summary route will not be created in FortiOS due to the limitation of unlicensed VM only allowing 3 routes. Add the VNET summary route after licensing has finished.**
+
 **If availability_zone is set to true, then region must support this feature. If availability_zone is set to false, then the deployment will be performed using an availability set with 2 domains.**
 
 Topology using default variables
@@ -39,7 +40,7 @@ Topology using default variables
 
 For a detailed walkthrough of the operation of this topology, refer to https://github.com/fortinet/azure-templates/tree/main/FortiGate/Active-Passive-ELB-ILB
 
-** Azure load balancers do not support ICMP traffic **
+**Azure load balancers do not support ICMP traffic**
 
 ## Deployment
 
