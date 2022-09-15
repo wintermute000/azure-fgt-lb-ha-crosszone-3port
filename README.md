@@ -30,18 +30,20 @@ Terraform deploys the following components:
 * UDRs for internal subnet routing table for default routing and inter-subnet routing through FortiGate
 * Choose PAYG or BYOL in variables - if BYOL, place .lic files in subfolder "licenses" and define in variables.
 * Choose availability zone or availability set using the availability_zone boolean variable (false will use availability set).
-* Terraform backend (versions.tf) stored in Azure storage - customise backend.conf to suit or modify as appropriate. An backend.conf.example is provided. 
+* Terraform backend (versions.tf) stored in Azure storage - customise backend.conf to suit or modify as appropriate. An backend.conf.example is provided  or comment out the backend "azurerm" resource block to use the default local backend for example.
 
 **If BYOL is used, then the VNET summary route will not be created in FortiOS due to the limitation of unlicensed VM only allowing 3 routes. Add the VNET summary route after licensing has finished.**
 
 **If availability_zone is set to true, then region must support this feature. If availability_zone is set to false, then the deployment will be performed using an availability set with 2 domains.**
 
-Topology using default variables
+**Topology using default variables**
+
 ![img](https://github.com/wintermute000/azure-fgt-lb-ha-crosszone-3port/blob/master/azure-fgt-lb-ha-crosszone-3port.jpg)
 
 For a detailed walkthrough of the operation of this topology, refer to https://github.com/fortinet/azure-templates/tree/main/FortiGate/Active-Passive-ELB-ILB
 
-**Azure load balancers do not support ICMP traffic**
+**Azure standard load balancers do not support ICMP traffic**
+For more information: https://docs.microsoft.com/en-us/archive/blogs/mast/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity
 
 ## Deployment
 
