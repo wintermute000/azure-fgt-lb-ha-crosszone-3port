@@ -101,7 +101,7 @@ resource "azurerm_virtual_machine" "passivefgtvm" {
   }
 
   storage_os_disk {
-    name              = "passiveosDisk"
+    name              = "${var.passivename}-osDisk"
     caching           = "ReadWrite"
     managed_disk_type = "Standard_LRS"
     create_option     = "FromImage"
@@ -109,7 +109,7 @@ resource "azurerm_virtual_machine" "passivefgtvm" {
 
   # Log data disks
   storage_data_disk {
-    name              = "passivedatadisk"
+    name              = "${var.passivename}-datadisk"
     managed_disk_type = "Standard_LRS"
     create_option     = "Empty"
     lun               = 0
