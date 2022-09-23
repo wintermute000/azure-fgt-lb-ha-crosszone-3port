@@ -135,7 +135,7 @@ resource "azurerm_virtual_machine" "activefgtvm" {
     admin_password = var.adminpassword
     custom_data = templatefile("${var.bootstrap-active}", {
       type            = var.license_type
-      license_file    = "${path.module}/licenses/${var.license}"
+      license_file    = var.fgtlicense != "" ? "./licenses/${var.fgtlicense}" : ""
       activename      = var.activename
       port1_ip        = var.activeport1
       port1_mask      = var.activeport1mask
@@ -157,6 +157,7 @@ resource "azurerm_virtual_machine" "activefgtvm" {
       rsg             = azurerm_resource_group.myterraformgroup.name
       clusterip       = azurerm_public_ip.ClusterPublicIP.name
       # routename       = azurerm_route_table.private1_rt.name
+      fgtflextoken   = var.fgtflextoken
     })
   }
 
