@@ -21,7 +21,7 @@ This terraform script supports both availability zones and availablity sets with
 Terraform deploys the following components:
 
 * Azure Virtual Network with 4 subnets - external, internal, 2x workload subnets
-* 2x FortiGate-VM (BYOL/PAYG) instances with three NICs.  Each FortiGate-VM reside in different availability zones.
+* 2x FortiGate-VM (BYOL/PAYG) instances with three NICs.  Each FortiGate-VM resides in different availability zones or uses an availability set.
 * Untrust interface placed in SD-WAN zone "Underlay".
 * 2x firewall rules - permit outbound, and permit internal.
 * 4x load balancer rules - UDP 500/4500 without floating-ip for IPSec/ADVPN connectivity , TCP541 with floating-ip for FortiManager, and TCP22 with floating-ip for testing. Note FortiGate VIPs/rules will need to be created for TCP 541/22 examples. 
